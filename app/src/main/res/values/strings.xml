@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Github User App</string>
+    <string name="search_github_user">Search Github User</string>
+    <string name="followers_tab">Followers</string>
+    <string name="following_tab">Following</string>
+    <string name="followers">Followers ·</string>
+    <string name="following">Following</string>
+    <string name="user">User</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="preferences_key_daily_reminder">daily_reminder</string>
+    <string name="widget_text_empty">Empty</string>
+    <string name="widget_text_title">Favorite Widget</string>
+    <string name="data_empty">Data Empty</string>
+</resources>

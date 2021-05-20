@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/fragment_user">
+
+    <fragment
+        android:id="@+id/fragment_user"
+        android:name="com.dicoding.picodiploma.githubuserapp.ui.home.user.UserFragment"
+        android:label="User"
+        tools:layout="@layout/fragment_user">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_favorite"
+        android:name="com.dicoding.picodiploma.githubuserapp.ui.home.favorite.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite">
+
+    </fragment>
+</navigation>

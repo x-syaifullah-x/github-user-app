@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.dicoding.picodiploma.githubuserapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding = true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constrain_layout_version"
+
+    def vRetrofit = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$vRetrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$vRetrofit"
+
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
+
+    def vNavigationKtx = "2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:$vNavigationKtx"
+    implementation "androidx.navigation:navigation-ui-ktx:$vNavigationKtx"
+
+    def vRoom = "2.4.0-alpha02"
+    implementation "androidx.room:room-runtime:$vRoom"
+    implementation "androidx.room:room-ktx:$vRoom"
+    kapt "androidx.room:room-compiler:$vRoom"
+
+    implementation "androidx.preference:preference-ktx:1.1.1"
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espreso_core_version"
+}

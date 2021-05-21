@@ -9,7 +9,7 @@ import android.os.Build.VERSION_CODES
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-class ReminderNotification(context: Context) {
+class DailyReminderNotification(context: Context) {
 
     companion object {
         const val CHANNEL_ID_DAILY_REMINDER = "CHANNEL_ID_DAILY_REMINDER"

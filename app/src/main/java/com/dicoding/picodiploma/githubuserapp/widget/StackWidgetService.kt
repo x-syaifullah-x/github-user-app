@@ -7,7 +7,7 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.bumptech.glide.Glide
 import com.dicoding.picodiploma.githubuserapp.R
-import com.dicoding.picodiploma.githubuserapp.data.local.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.UserColumns.Companion.CONTENT_URI
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.User
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.toListUser
 import com.dicoding.picodiploma.githubuserapp.widget.FavoriteWidget.Companion.EXTRA_ITEM

@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.githubuserapp.provider
 
-import android.appwidget.AppWidgetManager
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.Intent
@@ -9,8 +8,8 @@ import android.database.Cursor
 import android.net.Uri
 import com.dicoding.picodiploma.githubuserapp.data.local.dao.UserDao
 import com.dicoding.picodiploma.githubuserapp.data.local.db.AppDatabase
-import com.dicoding.picodiploma.githubuserapp.data.local.db.DatabaseContract.AUTHORITY
-import com.dicoding.picodiploma.githubuserapp.data.local.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.AUTHORITY
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.UserColumns.Companion.CONTENT_URI
 import com.dicoding.picodiploma.githubuserapp.data.local.entity.UserEntity.Companion.TABLE_NAME
 import com.dicoding.picodiploma.githubuserapp.data.local.entity.toUserEntity
 import com.dicoding.picodiploma.githubuserapp.widget.FavoriteWidget
@@ -55,7 +54,7 @@ class AppProvider : ContentProvider() {
 
         context?.contentResolver?.notifyChange(CONTENT_URI, null)
         if (added > 0) {
-            updateWidget()
+            FavoriteWidget.updateWidget(context)
             return Uri.parse("$CONTENT_URI/$added")
         }
         return null
@@ -72,7 +71,7 @@ class AppProvider : ContentProvider() {
             else -> -1
         }
 
-        if (res > 0) updateWidget()
+        if (res > 0) FavoriteWidget.updateWidget(context)
         return res
     }
 
@@ -82,11 +81,4 @@ class AppProvider : ContentProvider() {
         uri: Uri, values: ContentValues?, selection: String?,
         selectionArgs: Array<String>?
     ): Int = -1
-
-    private fun updateWidget() {
-        val intent = Intent(context, FavoriteWidget::class.java).apply {
-            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-        }
-        context?.sendBroadcast(intent)
-    }
 }

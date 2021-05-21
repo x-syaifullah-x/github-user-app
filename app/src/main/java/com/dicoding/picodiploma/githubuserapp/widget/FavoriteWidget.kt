@@ -18,6 +18,16 @@ class FavoriteWidget : AppWidgetProvider() {
     companion object {
         const val EXTRA_ITEM = "com.dicoding.picodiploma.githubuserapp.EXTRA_ITEM"
         const val ACTION = "com.dicoding.picodiploma.githubuserapp.ACTION"
+
+        private const val ACTION_UPDATE_WIDGET = "ACTION_UPDATE_WIDGET"
+
+        fun updateWidget(context: Context?) {
+            context?.run {
+                val intent = Intent(this, FavoriteWidget::class.java)
+                    .apply { action = ACTION_UPDATE_WIDGET }
+                sendBroadcast(intent)
+            }
+        }
     }
 
     override fun onUpdate(
@@ -51,7 +61,7 @@ class FavoriteWidget : AppWidgetProvider() {
             if (it.action == ACTION)
                 makeText(context, it.getStringExtra(EXTRA_ITEM), LENGTH_SHORT).show()
 
-            if (it.action == AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+            if (it.action == AppWidgetManager.ACTION_APPWIDGET_UPDATE || it.action == ACTION_UPDATE_WIDGET)
                 updateWidget(context)
         }
     }

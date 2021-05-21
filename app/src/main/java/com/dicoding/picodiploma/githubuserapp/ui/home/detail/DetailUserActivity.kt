@@ -3,16 +3,16 @@ package com.dicoding.picodiploma.githubuserapp.ui.home.detail
 import android.R.drawable.ic_delete
 import android.R.drawable.ic_input_add
 import android.app.AlertDialog
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import com.dicoding.picodiploma.githubuserapp.data.local.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
 import com.dicoding.picodiploma.githubuserapp.data.local.entity.toUserEntity
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.User
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.toContentValues
 import com.dicoding.picodiploma.githubuserapp.databinding.ActivityDetailUserBinding
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.UserColumns.Companion.CONTENT_URI_ID
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -53,8 +53,7 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun isFavorite(id: Int?): Boolean {
-        val uri = Uri.parse("$CONTENT_URI/$id")
-        val cursor = contentResolver.query(uri, null, null, null, null)
+        val cursor = contentResolver.query(CONTENT_URI_ID(id), null, null, null, null)
         val dataEntity = cursor.toUserEntity()
         cursor?.close()
         return dataEntity != null
@@ -66,7 +65,7 @@ class DetailUserActivity : AppCompatActivity() {
             .setMessage("do you want to ${if (isFavorite(user?.id)) "delete" else "add"}")
             .setPositiveButton("Yes") { _, _ ->
                 if (isFavorite(user?.id)) {
-                    contentResolver.delete(Uri.parse("$CONTENT_URI/${user?.id}"), null, null)
+                    contentResolver.delete(CONTENT_URI_ID(user?.id), null, null)
                         .apply { if (this > 0) finish() }
                 } else {
                     contentResolver.insert(CONTENT_URI, user?.toContentValues())

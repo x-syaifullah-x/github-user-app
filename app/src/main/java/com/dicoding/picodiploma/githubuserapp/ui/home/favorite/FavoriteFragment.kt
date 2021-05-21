@@ -12,7 +12,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.githubuserapp.R
-import com.dicoding.picodiploma.githubuserapp.data.local.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import com.dicoding.picodiploma.githubuserapp.provider.AppProviderContract.UserColumns.Companion.CONTENT_URI
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.User
 import com.dicoding.picodiploma.githubuserapp.data.remote.response.toListUser
 import com.dicoding.picodiploma.githubuserapp.databinding.FragmentFavoriteBinding
